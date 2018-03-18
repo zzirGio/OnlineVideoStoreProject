@@ -61,3 +61,8 @@ C:\VideoStoreS12016TestedLabs\Common\bin\Debug\Common.pdb
 C:\VideoStoreS12016TestedLabs\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
 C:\VideoStoreS12016TestedLabs\Common\obj\Debug\Common.dll
 C:\VideoStoreS12016TestedLabs\Common\obj\Debug\Common.pdb
+C:\Users\sergi\Documents\uni_projects\comp5348\OnlineVideoStoreProject\Common\bin\Debug\Common.dll
+C:\Users\sergi\Documents\uni_projects\comp5348\OnlineVideoStoreProject\Common\bin\Debug\Common.pdb
+C:\Users\sergi\Documents\uni_projects\comp5348\OnlineVideoStoreProject\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+C:\Users\sergi\Documents\uni_projects\comp5348\OnlineVideoStoreProject\Common\obj\Debug\Common.dll
+C:\Users\sergi\Documents\uni_projects\comp5348\OnlineVideoStoreProject\Common\obj\Debug\Common.pdb

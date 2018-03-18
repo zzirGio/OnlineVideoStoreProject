@@ -129,3 +129,17 @@ C:\VideoStoreS12016TestedLabs\VideoStore.Business.Components.Interfaces\bin\Debu
 C:\VideoStoreS12016TestedLabs\VideoStore.Business.Components.Interfaces\obj\Debug\VideoStore.Business.Components.Interfaces.csprojResolveAssemblyReference.cache
 C:\VideoStoreS12016TestedLabs\VideoStore.Business.Components.Interfaces\obj\Debug\VideoStore.Business.Components.Interfaces.dll
 C:\VideoStoreS12016TestedLabs\VideoStore.Business.Components.Interfaces\obj\Debug\VideoStore.Business.Components.Interfaces.pdb
+C:\Users\sergi\Documents\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Business.Components.Interfaces\bin\Debug\VideoStore.Business.Components.Interfaces.dll
+C:\Users\sergi\Documents\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Business.Components.Interfaces\bin\Debug\VideoStore.Business.Components.Interfaces.pdb
+C:\Users\sergi\Documents\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Business.Components.Interfaces\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\sergi\Documents\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Business.Components.Interfaces\bin\Debug\VideoStore.Business.Entities.dll
+C:\Users\sergi\Documents\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Business.Components.Interfaces\bin\Debug\EntityFramework.dll
+C:\Users\sergi\Documents\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Business.Components.Interfaces\bin\Debug\VideoStore.Business.Entities.pdb
+C:\Users\sergi\Documents\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Business.Components.Interfaces\bin\Debug\VideoStore.Business.Entities.dll.config
+C:\Users\sergi\Documents\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Business.Components.Interfaces\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\sergi\Documents\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Business.Components.Interfaces\bin\Debug\EntityFramework.xml
+C:\Users\sergi\Documents\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Business.Components.Interfaces\obj\Debug\VideoStore.Business.Components.Interfaces.csprojResolveAssemblyReference.cache
+C:\Users\sergi\Documents\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Business.Components.Interfaces\obj\Debug\VideoStore.Business.Components.Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\sergi\Documents\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Business.Components.Interfaces\obj\Debug\VideoStore.Business.Components.Interfaces.csproj.CopyComplete
+C:\Users\sergi\Documents\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Business.Components.Interfaces\obj\Debug\VideoStore.Business.Components.Interfaces.dll
+C:\Users\sergi\Documents\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Business.Components.Interfaces\obj\Debug\VideoStore.Business.Components.Interfaces.pdb

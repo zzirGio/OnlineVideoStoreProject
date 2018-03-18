@@ -14,6 +14,11 @@ namespace VideoStore.Business.Entities
     
     public partial class Media
     {
+        public Media()
+        {
+            this.Reviews = new HashSet<Review>();
+        }
+    
         public int Id { get; set; }
         public string Title { get; set; }
         public string Director { get; set; }
@@ -21,5 +26,6 @@ namespace VideoStore.Business.Entities
         public decimal Price { get; set; }
     
         public virtual Stock Stocks { get; set; }
+        public virtual ICollection<Review> Reviews { get; set; }
     }
 }

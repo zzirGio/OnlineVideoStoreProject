@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 02/24/2015 20:42:41
--- Generated from EDMX file: C:\Users\MATT_Mac\Desktop\VideoStoreS12015TestedLabs(1)\VideoStore.Entities\VideoStore.Business.Entities\VideoStoreEntityModel.edmx
+-- Date Created: 03/18/2018 22:49:04
+-- Generated from EDMX file: C:\Users\sergi\Documents\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Entities\VideoStore.Business.Entities\VideoStoreEntityModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -85,6 +85,8 @@ CREATE TABLE [dbo].[Users] (
     [Address] nvarchar(max)  NULL,
     [Email] nvarchar(max)  NOT NULL,
     [Revision] timestamp  NOT NULL,
+    [City] nvarchar(max)  NOT NULL,
+    [Country] nvarchar(max)  NOT NULL,
     [LoginCredential_Id] int  NOT NULL
 );
 GO
@@ -152,6 +154,18 @@ CREATE TABLE [dbo].[Roles] (
 );
 GO
 
+-- Creating table 'Reviews'
+CREATE TABLE [dbo].[Reviews] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Title] nvarchar(max)  NOT NULL,
+    [Content] nvarchar(max)  NOT NULL,
+    [Rating] nvarchar(max)  NOT NULL,
+    [Date] timestamp  NOT NULL,
+    [User_Id] int  NOT NULL,
+    [Media_Id] int  NOT NULL
+);
+GO
+
 -- Creating table 'UserRole'
 CREATE TABLE [dbo].[UserRole] (
     [User_Id] int  NOT NULL,
@@ -208,6 +222,12 @@ GO
 -- Creating primary key on [Id] in table 'Roles'
 ALTER TABLE [dbo].[Roles]
 ADD CONSTRAINT [PK_Roles]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'Reviews'
+ALTER TABLE [dbo].[Reviews]
+ADD CONSTRAINT [PK_Reviews]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -333,6 +353,36 @@ GO
 CREATE INDEX [IX_FK_MediaStock]
 ON [dbo].[Media]
     ([Stocks_Id]);
+GO
+
+-- Creating foreign key on [User_Id] in table 'Reviews'
+ALTER TABLE [dbo].[Reviews]
+ADD CONSTRAINT [FK_ReviewUser]
+    FOREIGN KEY ([User_Id])
+    REFERENCES [dbo].[Users]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ReviewUser'
+CREATE INDEX [IX_FK_ReviewUser]
+ON [dbo].[Reviews]
+    ([User_Id]);
+GO
+
+-- Creating foreign key on [Media_Id] in table 'Reviews'
+ALTER TABLE [dbo].[Reviews]
+ADD CONSTRAINT [FK_ReviewMedia]
+    FOREIGN KEY ([Media_Id])
+    REFERENCES [dbo].[Media]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ReviewMedia'
+CREATE INDEX [IX_FK_ReviewMedia]
+ON [dbo].[Reviews]
+    ([Media_Id]);
 GO
 
 -- --------------------------------------------------
