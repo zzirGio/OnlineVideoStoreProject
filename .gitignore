@@ -1,0 +1,14 @@
+
+\.vs/VideoStore/v15/
+
+Common/bin/Debug/
+
+Common/obj/Debug/
+
+*.dll
+
+*.pdb
+
+*.cache
+
+*.exe
