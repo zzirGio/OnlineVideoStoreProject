@@ -23,6 +23,7 @@
                     @Html.Hidden("pMediaId", item.Id) 
                     @Html.Hidden("pReturnUrl", ViewContext.HttpContext.Request.Url.PathAndQuery)
                     <input type="submit" value="+ Add to Cart" />
+                    @Html.ActionLink("Details", "Details", "Media", new { mediaId = item.Id}, null)
                 } 
             </td>
         </tr>
