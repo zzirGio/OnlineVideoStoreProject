@@ -22,8 +22,17 @@ namespace VideoStore.WebClient.Controllers
         {
             // get Media item
             var media = ServiceFactory.Instance.CatalogueService.GetMediaById(mediaId);
+            var vm = new MediaDetailsViewModel
+            {
+                Title = media.Title,
+                Director = media.Director,
+                Genre = media.Genre,
+                Price = media.Price,
+                StockCount = media.StockCount,
+//                Reviews = media.Reviews,
+            };
 
-            return View(new MediaDetailsViewModel { Media = media});
+            return View(vm);
         }
 
         [HttpPost]

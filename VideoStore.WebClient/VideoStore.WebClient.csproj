@@ -177,6 +177,7 @@
     </Compile>
     <Compile Include="Binders\LoggedInUserBinder.cs" />
     <Compile Include="ViewModels\CheckOutViewModel.cs" />
+    <Compile Include="ViewModels\CreateReviewViewModel.cs" />
     <Compile Include="ViewModels\MediaDetailsViewModel.cs" />
     <Compile Include="ViewModels\EditUserDetailsViewModel.cs" />
     <Compile Include="ViewModels\InsufficientStockViewModel.cs" />

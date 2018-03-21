@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace VideoStore.Services.MessageTypes
 {
-    public class Review
+    public class Review : MessageType
     {
-        public int Id { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
         public int Rating { get; set; }

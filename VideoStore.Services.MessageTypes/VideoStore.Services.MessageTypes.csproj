@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Review.cs" />
     <Compile Include="Faults\InsufficientStockFault.cs" />
     <Compile Include="LoginCredential.cs" />
     <Compile Include="Media.cs" />
