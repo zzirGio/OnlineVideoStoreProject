@@ -22,3 +22,9 @@ VideoStore\.WebClient/bin/
 VideoStore\.WebClient/obj/Debug/
 
 *.cache
+
+*.exe
+
+*.pdb
+
+*.dll
