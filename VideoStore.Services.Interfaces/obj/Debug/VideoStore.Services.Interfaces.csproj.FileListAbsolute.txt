@@ -115,3 +115,14 @@ C:\VideoStoreS12016TestedLabs\VideoStore.Services.Interfaces\bin\Debug\Microsoft
 C:\VideoStoreS12016TestedLabs\VideoStore.Services.Interfaces\obj\Debug\VideoStore.Services.Interfaces.csprojResolveAssemblyReference.cache
 C:\VideoStoreS12016TestedLabs\VideoStore.Services.Interfaces\obj\Debug\VideoStore.Services.Interfaces.dll
 C:\VideoStoreS12016TestedLabs\VideoStore.Services.Interfaces\obj\Debug\VideoStore.Services.Interfaces.pdb
+C:\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Services.Interfaces\bin\Debug\VideoStore.Services.Interfaces.dll
+C:\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Services.Interfaces\bin\Debug\VideoStore.Services.Interfaces.pdb
+C:\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Services.Interfaces\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Services.Interfaces\bin\Debug\VideoStore.Services.MessageTypes.dll
+C:\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Services.Interfaces\bin\Debug\VideoStore.Services.MessageTypes.pdb
+C:\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Services.Interfaces\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Services.Interfaces\obj\Debug\VideoStore.Services.Interfaces.csprojResolveAssemblyReference.cache
+C:\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Services.Interfaces\obj\Debug\VideoStore.Services.Interfaces.csproj.CoreCompileInputs.cache
+C:\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Services.Interfaces\obj\Debug\VideoStore.Services.Interfaces.csproj.CopyComplete
+C:\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Services.Interfaces\obj\Debug\VideoStore.Services.Interfaces.dll
+C:\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Services.Interfaces\obj\Debug\VideoStore.Services.Interfaces.pdb
