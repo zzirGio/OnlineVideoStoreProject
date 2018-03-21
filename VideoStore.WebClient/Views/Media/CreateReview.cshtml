@@ -1,0 +1,40 @@
+﻿@model VideoStore.WebClient.ViewModels.CreateReviewViewModel
+
+@{
+    ViewBag.Title = "CreateReview";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create Review</h2>
+
+@using (Html.BeginForm("SaveReview", "Media", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div>
+        <h4>Write your Review</h4>
+        <hr />
+        <dl class="dl-horizontal">
+
+            <dt>Title:</dt>
+            <dd>
+                @Html.TextBoxFor(m => m.Title)
+                @Html.ValidationMessageFor(m => m.Title)
+            </dd>
+            <br />
+            <dt>Content:</dt>
+            <dd>
+                @Html.TextBoxFor(m => m.Content)
+                @Html.ValidationMessageFor(m => m.Content)
+            </dd>
+            <dt>Rating:</dt>
+            <dd>
+                @Html.TextBoxFor(m => m.Rating)
+                @Html.ValidationMessageFor(m => m.Rating)
+            </dd>
+        </dl>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Update" class="btn btn-default" />
+        </div>
+    </div>
+}

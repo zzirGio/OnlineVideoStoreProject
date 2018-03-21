@@ -10,17 +10,8 @@
 
 <p>Details WIP</p>
 
-<label>Title</label>
-@Html.DisplayFor(x => Model.Media.Title)
-
-<label>Director</label>
-@Html.DisplayFor(x => Model.Media.Director)
-
-<label>Genre</label>
-@Html.DisplayFor(x => Model.Media.Genre)
-
-<label>Price</label>
-@Html.DisplayFor(x => Model.Media.Price)
-
-<label>StockCount</label>
-@Html.DisplayFor(x => Model.Media.StockCount)
+<p>Title: @Html.DisplayFor(x => Model.Media.Title)</p>
+<p>Director @Html.DisplayFor(x => Model.Media.Director)</p>
+<p>Genre @Html.DisplayFor(x => Model.Media.Genre)</p>
+<p>Price @Html.DisplayFor(x => Model.Media.Price)</p>
+<p>StockCount @Html.DisplayFor(x => Model.Media.StockCount)</p>

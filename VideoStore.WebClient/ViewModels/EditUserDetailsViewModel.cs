@@ -17,6 +17,8 @@ namespace VideoStore.WebClient.ViewModels
         {
             Email = pUser.Email;
             Address = pUser.Address;
+            City = pUser.City;
+            Country = pUser.Country;
         }
 
 
@@ -38,10 +40,30 @@ namespace VideoStore.WebClient.ViewModels
         }
 
 
+        [DataType(DataType.MultilineText)]
+        [Display(Name = "City")]
+        public string City
+        {
+            get;
+            set;
+        }
+
+
+        [DataType(DataType.MultilineText)]
+        [Display(Name = "Country")]
+        public string Country
+        {
+            get;
+            set;
+        }
+
+
         public User UpdateMessageType(User pUser)
         {
             pUser.Email = Email;
             pUser.Address = Address;
+            pUser.Address = City;
+            pUser.Address = Country;
             return pUser;
         }
     }

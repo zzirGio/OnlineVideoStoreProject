@@ -20,3 +20,5 @@ VideoStore\.Services/obj/Debug/
 VideoStore\.WebClient/bin/
 
 VideoStore\.WebClient/obj/Debug/
+
+*.cache
