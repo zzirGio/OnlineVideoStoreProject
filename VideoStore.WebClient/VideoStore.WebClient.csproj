@@ -21,6 +21,8 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -166,6 +168,7 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MediaController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="CustomAuth\CustomRoleStore.cs" />
     <Compile Include="CustomAuth\CustomUserStore.cs" />
@@ -174,6 +177,8 @@
     </Compile>
     <Compile Include="Binders\LoggedInUserBinder.cs" />
     <Compile Include="ViewModels\CheckOutViewModel.cs" />
+    <Compile Include="ViewModels\CreateReviewViewModel.cs" />
+    <Compile Include="ViewModels\MediaDetailsViewModel.cs" />
     <Compile Include="ViewModels\EditUserDetailsViewModel.cs" />
     <Compile Include="ViewModels\InsufficientStockViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
@@ -233,6 +238,8 @@
     <Content Include="Views\Manage\UpdateUser.cshtml" />
     <Content Include="Views\Manage\ErrorUpdatingUserDetails.cshtml" />
     <Content Include="Views\Cart\InsufficientStock.cshtml" />
+    <Content Include="Views\Media\Details.cshtml" />
+    <Content Include="Views\Media\CreateReview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
