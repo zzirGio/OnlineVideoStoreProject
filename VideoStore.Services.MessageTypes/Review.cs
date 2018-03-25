@@ -15,5 +15,7 @@ namespace VideoStore.Services.MessageTypes
 
         public User User { get; set; }
         public Media Media { get; set; }
+
+        public string Location => User.LocationString;
     }
 }

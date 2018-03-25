@@ -46,17 +46,13 @@ namespace VideoStore.Services
             return externalResult;
         }
 
-        public void CreateReview(User pUser, Media pMedia)
+        public void CreateReview(Review pReview)
         {
-            var internalUserType = MessageTypeConverter.Instance.Convert<
-                VideoStore.Services.MessageTypes.User,
-                VideoStore.Business.Entities.User>(
-                pUser);
-            var internalMediaType = MessageTypeConverter.Instance.Convert<
-                VideoStore.Services.MessageTypes.Media,
-                VideoStore.Business.Entities.Media>(
-                pMedia);
-            ReviewProvider.CreateReview(internalUserType, internalMediaType);
+            var internalType = MessageTypeConverter.Instance.Convert<
+                VideoStore.Services.MessageTypes.Review,
+                VideoStore.Business.Entities.Review>(
+                pReview);
+            ReviewProvider.CreateReview(internalType);
         }
 
         public void UpdateReview(Review pReview)

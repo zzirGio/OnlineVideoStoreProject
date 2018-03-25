@@ -29,15 +29,30 @@ namespace VideoStore.WebClient.Controllers
                 Genre = media.Genre,
                 Price = media.Price,
                 StockCount = media.StockCount,
-//                Reviews = media.Reviews,
+                Reviews = media.Reviews,
             };
 
             return View(vm);
         }
 
-        [HttpPost]
-        public ActionResult SaveReview()
+        [HttpGet]
+        public ActionResult CreateReview()
         {
+            var user = new User();
+            var vm = new CreateReviewViewModel
+            {
+                ReviewDate = DateTime.Now,
+                ReviewerName = user.Name,
+                Location = user.LocationString
+            };
+            return View(vm);
+        }
+
+        [HttpPost]
+        public ActionResult CreateReview(CreateReviewViewModel vm)
+        {
+            // save stuff
+
             var media = new Media();
             return RedirectToAction("Details", new {mediaId = media.Id});
         }

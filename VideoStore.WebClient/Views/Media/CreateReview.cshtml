@@ -13,7 +13,21 @@
         <h4>Write your Review</h4>
         <hr />
         <dl class="dl-horizontal">
-
+            <dt>Review Date:</dt>
+            <dd>
+                @Html.DisplayFor(m => m.ReviewDate)
+            </dd>
+            <br />
+            <dt>Review Name:</dt>
+            <dd>
+                @Html.DisplayFor(m => m.ReviewerName)
+            </dd>
+            <br />
+            <dt>Location:</dt>
+            <dd>
+                @Html.DisplayFor(m => m.Location)
+            </dd>
+            <br />
             <dt>Title:</dt>
             <dd>
                 @Html.TextBoxFor(m => m.Title)
@@ -25,6 +39,7 @@
                 @Html.TextBoxFor(m => m.Content)
                 @Html.ValidationMessageFor(m => m.Content)
             </dd>
+            <br />
             <dt>Rating:</dt>
             <dd>
                 @Html.TextBoxFor(m => m.Rating)

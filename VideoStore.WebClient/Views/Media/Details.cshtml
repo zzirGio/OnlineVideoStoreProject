@@ -15,4 +15,31 @@
 <p>Genre @Html.DisplayFor(x => Model.Genre)</p>
 <p>Price @Html.DisplayFor(x => Model.Price)</p>
 <p>StockCount @Html.DisplayFor(x => Model.StockCount)</p>
-@*<p>Average Rating @Html.DisplayFor(x => Model.AverageRating)</p>*@
+<p>Average Rating @Html.DisplayFor(x => Model.AverageRating)</p>
+
+<table>
+    <tr>
+        <th>Reviews</th>
+        <th>@Html.ActionLink("Create Review", "CreateReview", "Media", new { mediaId = item.Id}, null)</th>
+    </tr>
+    @foreach (var item in Model.Reviews)
+    {
+        <tr>
+            <td>
+                public string Title { get; set; }
+                public string Content { get; set; }
+                public int Rating { get; set; }
+                public DateTime Date { get; set; }
+
+                public User User { get; set; }
+                public Media Media { get; set; }
+                @item.Title | 
+                @item.Rating |
+                @item.Date |
+                @item.Content |
+                @item.Location |
+                @item.User.Name |
+            </td>
+        </tr>
+    }
+</table>

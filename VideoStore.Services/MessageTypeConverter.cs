@@ -36,6 +36,10 @@ namespace VideoStore.Services
                 VideoStore.Services.MessageTypes.Media>().ForMember(
                     dest => dest.StockCount, opts => opts.MapFrom( src => src.Stocks.Quantity));
 
+            AutoMapper.Mapper.CreateMap<VideoStore.Business.Entities.Media,
+                VideoStore.Services.MessageTypes.Media>().ForMember(
+                dest => dest.Reviews, opts => opts.MapFrom(src => src.Reviews));
+
             AutoMapper.Mapper.CreateMap<VideoStore.Business.Entities.Order,
                 VideoStore.Services.MessageTypes.Order>();
 

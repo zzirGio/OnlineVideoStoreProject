@@ -34,5 +34,7 @@ namespace VideoStore.Services.MessageTypes
         {
             get { return this.Id.ToString(); }
         }
+
+        public string LocationString => string.Format("{0}, {1}", this.City, this.Country);
     }
 }
