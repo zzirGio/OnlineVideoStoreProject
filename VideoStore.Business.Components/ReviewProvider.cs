@@ -12,8 +12,10 @@ namespace VideoStore.Business.Components
     {
         public List<Review> GetReviewsByMedia(int mediaId)
         {
-            var list = new List<Review>();
-            return list;
+            using (VideoStoreEntityModelContainer lContainer = new VideoStoreEntityModelContainer())
+            {
+                return lContainer.Media.Include("Stocks").First(p => p.Id == mediaId);
+            }
         }
 
         public List<Review> GetReviewsByUsers(int userId)
@@ -31,7 +33,7 @@ namespace VideoStore.Business.Components
             }
         }
 
-        public void CreateReview(User pUsers, Media pMedia, Review pReview)
+        public void CreateReview(User pUser, Media pMedia)
         {
 
         }

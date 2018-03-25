@@ -225,3 +225,5 @@ C:\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Business.Components\
 C:\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Business.Components\obj\Debug\VideoStore.Business.Components.csproj.CopyComplete
 C:\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Business.Components\obj\Debug\VideoStore.Business.Components.dll
 C:\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Business.Components\obj\Debug\VideoStore.Business.Components.pdb
+E:\comp5348\OnlineVideoStoreProject\VideoStore.Business.Components\obj\Debug\VideoStore.Business.Components.csprojResolveAssemblyReference.cache
+E:\comp5348\OnlineVideoStoreProject\VideoStore.Business.Components\obj\Debug\VideoStore.Business.Components.csproj.CoreCompileInputs.cache

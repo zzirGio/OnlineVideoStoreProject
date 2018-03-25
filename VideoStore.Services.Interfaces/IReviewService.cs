@@ -18,7 +18,7 @@ namespace VideoStore.Services.Interfaces
         [OperationContract]
         Review GetReviewById(int id);
         [OperationContract]
-        void CreateReview(User pUsers, Media pMedia, Review pReview);
+        void CreateReview(User pUser, Media pMedia);
         [OperationContract]
         void UpdateReview(Review pReview);
         [OperationContract]

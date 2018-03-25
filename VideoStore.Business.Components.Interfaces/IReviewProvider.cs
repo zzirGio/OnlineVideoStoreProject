@@ -12,7 +12,7 @@ namespace VideoStore.Business.Components.Interfaces
         List<Review> GetReviewsByMedia(int mediaId);
         List<Review> GetReviewsByUsers(int userId);
         Review GetReviewById(int id);
-        void CreateReview(User pUsers, Media pMedia, Review pReview);
+        void CreateReview(User pUser, Media pMedia);
         void UpdateReview(Review pReview);
         void DeleteReview(Review pReview);
     }

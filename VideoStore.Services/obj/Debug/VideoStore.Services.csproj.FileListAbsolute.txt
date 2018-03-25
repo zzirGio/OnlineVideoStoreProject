@@ -277,3 +277,5 @@ C:\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Services\obj\Debug\V
 C:\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Services\obj\Debug\VideoStore.Services.csproj.CopyComplete
 C:\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Services\obj\Debug\VideoStore.Services.dll
 C:\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Services\obj\Debug\VideoStore.Services.pdb
+E:\comp5348\OnlineVideoStoreProject\VideoStore.Services\obj\Debug\VideoStore.Services.csprojResolveAssemblyReference.cache
+E:\comp5348\OnlineVideoStoreProject\VideoStore.Services\obj\Debug\VideoStore.Services.csproj.CoreCompileInputs.cache
