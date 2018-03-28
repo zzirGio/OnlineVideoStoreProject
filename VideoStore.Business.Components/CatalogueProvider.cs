@@ -13,6 +13,7 @@ namespace VideoStore.Business.Components
         {
             using (VideoStoreEntityModelContainer lContainer = new VideoStoreEntityModelContainer())
             {
+                lContainer.Configuration.ProxyCreationEnabled = false;
                 return (from MediaItem in lContainer.Media.Include("Stocks")
                        orderby MediaItem.Id
                        select MediaItem).Skip(pOffset).Take(pCount).ToList();
@@ -24,6 +25,7 @@ namespace VideoStore.Business.Components
         {
             using (VideoStoreEntityModelContainer lContainer = new VideoStoreEntityModelContainer())
             {
+                lContainer.Configuration.ProxyCreationEnabled = false;
                 return lContainer.Media.Include("Stocks").First(p => p.Id == pId); 
             }
         }

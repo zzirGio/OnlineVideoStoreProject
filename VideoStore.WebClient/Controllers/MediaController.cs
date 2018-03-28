@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using VideoStore.Services.Interfaces;
 using VideoStore.Services.MessageTypes;
 using VideoStore.WebClient.ViewModels;
 using VideoStore.WebClient.ViewModels;
@@ -12,6 +14,11 @@ namespace VideoStore.WebClient.Controllers
 {
     public class MediaController : Controller
     {
+        private IReviewService reviewService
+        {
+            get { return ServiceFactory.Instance.ReviewService; }
+        }
+
         // GET: Media
         public ActionResult Index()
         {
@@ -24,26 +31,22 @@ namespace VideoStore.WebClient.Controllers
             var media = ServiceFactory.Instance.CatalogueService.GetMediaById(mediaId);
             var vm = new MediaDetailsViewModel
             {
-                Title = media.Title,
-                Director = media.Director,
-                Genre = media.Genre,
-                Price = media.Price,
-                StockCount = media.StockCount,
-                Reviews = media.Reviews,
+                Media = media
             };
 
             return View(vm);
         }
 
         [HttpGet]
-        public ActionResult CreateReview()
+        public ActionResult CreateReview(Media pMedia, string username)
         {
-            var user = new User();
+            var user = ServiceFactory.Instance.UserService.GetUserByUserName(User.Identity.GetUserName());
             var vm = new CreateReviewViewModel
             {
                 ReviewDate = DateTime.Now,
                 ReviewerName = user.Name,
-                Location = user.LocationString
+                Media = pMedia,
+                User = user
             };
             return View(vm);
         }
@@ -51,10 +54,18 @@ namespace VideoStore.WebClient.Controllers
         [HttpPost]
         public ActionResult CreateReview(CreateReviewViewModel vm)
         {
-            // save stuff
+            Review newReview = new Review
+            {
+                Title = vm.Title,
+                Content = vm.Content,
+                Rating = vm.Rating,
+                Date = vm.ReviewDate,
+                User = vm.User,
+                Media = vm.Media
+            };
 
-            var media = new Media();
-            return RedirectToAction("Details", new {mediaId = media.Id});
+            reviewService.CreateReview(newReview);
+            return RedirectToAction("Details", new {mediaId = vm.Media.Id});
         }
     }
 }

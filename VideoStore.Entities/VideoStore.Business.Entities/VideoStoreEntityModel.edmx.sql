@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/25/2018 15:17:26
--- Generated from EDMX file: E:\comp5348\OnlineVideoStoreProject\VideoStore.Entities\VideoStore.Business.Entities\VideoStoreEntityModel.edmx
+-- Date Created: 03/21/2018 16:28:07
+-- Generated from EDMX file: C:\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Entities\VideoStore.Business.Entities\VideoStoreEntityModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -41,12 +41,6 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_MediaStock]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Media] DROP CONSTRAINT [FK_MediaStock];
 GO
-IF OBJECT_ID(N'[dbo].[FK_ReviewUser]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Reviews] DROP CONSTRAINT [FK_ReviewUser];
-GO
-IF OBJECT_ID(N'[dbo].[FK_ReviewMedia]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Reviews] DROP CONSTRAINT [FK_ReviewMedia];
-GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -75,9 +69,6 @@ IF OBJECT_ID(N'[dbo].[Media]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Roles]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Roles];
-GO
-IF OBJECT_ID(N'[dbo].[Reviews]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Reviews];
 GO
 IF OBJECT_ID(N'[dbo].[UserRole]', 'U') IS NOT NULL
     DROP TABLE [dbo].[UserRole];
@@ -168,8 +159,8 @@ CREATE TABLE [dbo].[Reviews] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Title] nvarchar(max)  NOT NULL,
     [Content] nvarchar(max)  NOT NULL,
-    [Rating] int  NOT NULL,
-    [Date] datetime  NOT NULL,
+    [Rating] nvarchar(max)  NOT NULL,
+    [Date] timestamp  NOT NULL,
     [User_Id] int  NOT NULL,
     [Media_Id] int  NOT NULL
 );

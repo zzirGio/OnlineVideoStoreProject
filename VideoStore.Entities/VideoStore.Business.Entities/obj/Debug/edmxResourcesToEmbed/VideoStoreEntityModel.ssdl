@@ -135,8 +135,8 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Rating" Type="int" Nullable="false" />
-    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Rating" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Date" Type="nvarchar(max)" Nullable="false" />
     <Property Name="User_Id" Type="int" Nullable="false" />
     <Property Name="Media_Id" Type="int" Nullable="false" />
   </EntityType>

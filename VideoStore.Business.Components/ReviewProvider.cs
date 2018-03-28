@@ -16,6 +16,7 @@ namespace VideoStore.Business.Components
         {
             using (VideoStoreEntityModelContainer lContainer = new VideoStoreEntityModelContainer())
             {
+                lContainer.Configuration.ProxyCreationEnabled = false;
                 return lContainer.Media.Include("Reviews").First(p => p.Id == mediaId).Reviews.ToList();
             }
         }

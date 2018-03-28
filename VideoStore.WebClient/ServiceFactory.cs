@@ -59,7 +59,7 @@ namespace VideoStore.WebClient
         {
             get
             {
-                return GetTcpService<IReviewService>("net.tcp://localhost:9010/IReviewService");
+                return GetTcpService<IReviewService>("net.tcp://localhost:9010/ReviewService");
             }
         }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VideoStore.Services.MessageTypes;
 
 namespace VideoStore.Services
 {
@@ -33,12 +34,20 @@ namespace VideoStore.Services
         private void InitializeInternalToExternalMappings()
         {
             AutoMapper.Mapper.CreateMap<VideoStore.Business.Entities.Media,
-                VideoStore.Services.MessageTypes.Media>().ForMember(
-                    dest => dest.StockCount, opts => opts.MapFrom( src => src.Stocks.Quantity));
+                VideoStore.Services.MessageTypes.Media>()
+                .ForMember(dest => dest.StockCount, opts => opts.MapFrom( src => src.Stocks.Quantity))
+                .ForMember(dest => dest.Reviews, opts => opts.NullSubstitute(new List<Media>()));
 
-            AutoMapper.Mapper.CreateMap<VideoStore.Business.Entities.Media,
-                VideoStore.Services.MessageTypes.Media>().ForMember(
-                dest => dest.Reviews, opts => opts.MapFrom(src => src.Reviews));
+            // Try to handle when a media item has no reviews
+//            AutoMapper.Mapper.CreateMap<VideoStore.Business.Entities.Media,
+//                VideoStore.Services.MessageTypes.Media>().ForMember(
+//                dest => dest.Reviews, opts => opts.MapFrom(src => src.Reviews));
+
+//            AutoMapper.Mapper.CreateMap<VideoStore.Business.Entities.Media,
+//                VideoStore.Services.MessageTypes.Media>()
+//                .ForMember(dest => dest.Reviews
+//                    , opt => opt.NullSubstitute(new List<VideoStore.Services.MessageTypes.Review>())
+//                );
 
             AutoMapper.Mapper.CreateMap<VideoStore.Business.Entities.Order,
                 VideoStore.Services.MessageTypes.Order>();

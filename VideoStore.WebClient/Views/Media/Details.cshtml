@@ -1,4 +1,5 @@
-﻿@model VideoStore.WebClient.ViewModels.MediaDetailsViewModel
+﻿@using Microsoft.AspNet.Identity
+@model VideoStore.WebClient.ViewModels.MediaDetailsViewModel
 
 
 @{
@@ -10,29 +11,22 @@
 
 <p>Details WIP</p>
 
-<p>Title: @Html.DisplayFor(x => Model.Title)</p>
-<p>Director @Html.DisplayFor(x => Model.Director)</p>
-<p>Genre @Html.DisplayFor(x => Model.Genre)</p>
-<p>Price @Html.DisplayFor(x => Model.Price)</p>
-<p>StockCount @Html.DisplayFor(x => Model.StockCount)</p>
+<p>Title: @Html.DisplayFor(x => Model.Media.Title)</p>
+<p>Director @Html.DisplayFor(x => Model.Media.Director)</p>
+<p>Genre @Html.DisplayFor(x => Model.Media.Genre)</p>
+<p>Price @Html.DisplayFor(x => Model.Media.Price)</p>
+<p>StockCount @Html.DisplayFor(x => Model.Media.StockCount)</p>
 <p>Average Rating @Html.DisplayFor(x => Model.AverageRating)</p>
 
 <table>
     <tr>
         <th>Reviews</th>
-        <th>@Html.ActionLink("Create Review", "CreateReview", "Media", new { mediaId = item.Id}, null)</th>
+        <th>@Html.ActionLink("Create Review", "CreateReview", "Media", new { pMedia = Model.Media, pUser = User.Identity.GetUserName()}, null)</th>
     </tr>
-    @foreach (var item in Model.Reviews)
+    @foreach (var item in Model.Media.Reviews)
     {
         <tr>
             <td>
-                public string Title { get; set; }
-                public string Content { get; set; }
-                public int Rating { get; set; }
-                public DateTime Date { get; set; }
-
-                public User User { get; set; }
-                public Media Media { get; set; }
                 @item.Title | 
                 @item.Rating |
                 @item.Date |
@@ -40,6 +34,12 @@
                 @item.Location |
                 @item.User.Name |
             </td>
+        </tr>
+    }
+    @if (Model.Media.Reviews.Count() == 0)
+    {
+        <tr>
+            <td>There are no reviews for this item.</td>
         </tr>
     }
 </table>

@@ -13,6 +13,8 @@ namespace VideoStore.WebClient.ViewModels
         public int Rating { get; set; }
         public DateTime ReviewDate { get; set; }
         public string ReviewerName { get; set; }
-        public string Location { get; set; }
+        public User User { get; set; }
+        public Media Media { get; set; }
+
     }
 }

@@ -7,8 +7,10 @@
 
 <h2>Create Review</h2>
 
-@using (Html.BeginForm("SaveReview", "Media", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
+@using (Html.BeginForm("CreateReview", "Media", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{   
+    @Html.HiddenFor(m => m.Media)
+    @Html.HiddenFor(m => m.User)
     <div>
         <h4>Write your Review</h4>
         <hr />
@@ -25,7 +27,7 @@
             <br />
             <dt>Location:</dt>
             <dd>
-                @Html.DisplayFor(m => m.Location)
+                @Html.DisplayFor(m => m.User.LocationString)
             </dd>
             <br />
             <dt>Title:</dt>
