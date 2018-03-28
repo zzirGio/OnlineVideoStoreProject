@@ -99,7 +99,7 @@ namespace VideoStore.Process
 
                         lContainer.Stocks.Add(lStock);
                     }
-
+                    // TODO: Restore Links to Review in Entities.Media and Entities.User
 
                     lContainer.SaveChanges();
                     lScope.Complete();

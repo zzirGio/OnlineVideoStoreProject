@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/21/2018 16:28:07
--- Generated from EDMX file: C:\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Entities\VideoStore.Business.Entities\VideoStoreEntityModel.edmx
+-- Date Created: 03/28/2018 22:39:32
+-- Generated from EDMX file: E:\comp5348\OnlineVideoStoreProject\VideoStore.Entities\VideoStore.Business.Entities\VideoStoreEntityModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -41,6 +41,12 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_MediaStock]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Media] DROP CONSTRAINT [FK_MediaStock];
 GO
+IF OBJECT_ID(N'[dbo].[FK_ReviewUser]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Reviews] DROP CONSTRAINT [FK_ReviewUser];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ReviewMedia]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Reviews] DROP CONSTRAINT [FK_ReviewMedia];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -69,6 +75,9 @@ IF OBJECT_ID(N'[dbo].[Media]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Roles]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Roles];
+GO
+IF OBJECT_ID(N'[dbo].[Reviews]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Reviews];
 GO
 IF OBJECT_ID(N'[dbo].[UserRole]', 'U') IS NOT NULL
     DROP TABLE [dbo].[UserRole];
@@ -160,7 +169,7 @@ CREATE TABLE [dbo].[Reviews] (
     [Title] nvarchar(max)  NOT NULL,
     [Content] nvarchar(max)  NOT NULL,
     [Rating] nvarchar(max)  NOT NULL,
-    [Date] timestamp  NOT NULL,
+    [Date] datetime  NOT NULL,
     [User_Id] int  NOT NULL,
     [Media_Id] int  NOT NULL
 );
@@ -372,15 +381,15 @@ GO
 
 -- Creating foreign key on [Media_Id] in table 'Reviews'
 ALTER TABLE [dbo].[Reviews]
-ADD CONSTRAINT [FK_ReviewMedia]
+ADD CONSTRAINT [FK_MediaReview]
     FOREIGN KEY ([Media_Id])
     REFERENCES [dbo].[Media]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_ReviewMedia'
-CREATE INDEX [IX_FK_ReviewMedia]
+-- Creating non-clustered index for FOREIGN KEY 'FK_MediaReview'
+CREATE INDEX [IX_FK_MediaReview]
 ON [dbo].[Reviews]
     ([Media_Id]);
 GO

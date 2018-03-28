@@ -16,8 +16,7 @@ namespace VideoStore.Business.Components
         {
             using (VideoStoreEntityModelContainer lContainer = new VideoStoreEntityModelContainer())
             {
-                lContainer.Configuration.ProxyCreationEnabled = false;
-                return lContainer.Media.Include("Reviews").First(p => p.Id == mediaId).Reviews.ToList();
+                return lContainer.Reviews.Where(p => p.Media.Id == mediaId).ToList();
             }
         }
 
@@ -25,7 +24,7 @@ namespace VideoStore.Business.Components
         {
             using (VideoStoreEntityModelContainer lContainer = new VideoStoreEntityModelContainer())
             {
-                return lContainer.Users.Include("Reviews").First(p => p.Id == userId).Reviews.ToList();
+                return lContainer.Reviews.Where(p => p.User.Id == userId).ToList();
             }
         }
 

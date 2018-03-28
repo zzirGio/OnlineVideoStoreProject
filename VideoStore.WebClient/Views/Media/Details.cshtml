@@ -21,9 +21,9 @@
 <table>
     <tr>
         <th>Reviews</th>
-        <th>@Html.ActionLink("Create Review", "CreateReview", "Media", new { pMedia = Model.Media, pUser = User.Identity.GetUserName()}, null)</th>
+        <th>@Html.ActionLink("Create Review", "CreateReview", "Media", new { pMediaId = Model.Media.Id, pUser = User.Identity.GetUserName()}, null)</th>
     </tr>
-    @foreach (var item in Model.Media.Reviews)
+    @foreach (var item in Model.Reviews)
     {
         <tr>
             <td>
@@ -31,12 +31,12 @@
                 @item.Rating |
                 @item.Date |
                 @item.Content |
-                @item.Location |
+                @item.User.LocationString |
                 @item.User.Name |
             </td>
         </tr>
     }
-    @if (Model.Media.Reviews.Count() == 0)
+    @if (!Model.Reviews.Any())
     {
         <tr>
             <td>There are no reviews for this item.</td>

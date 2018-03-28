@@ -52,7 +52,7 @@
       <End Role="Review" EntitySet="Reviews" />
       <End Role="User" EntitySet="Users" />
     </AssociationSet>
-    <AssociationSet Name="ReviewMedia" Association="VideoStoreEntityModel.Store.ReviewMedia">
+    <AssociationSet Name="MediaReview" Association="VideoStoreEntityModel.Store.MediaReview">
       <End Role="Review" EntitySet="Reviews" />
       <End Role="Media" EntitySet="Media" />
     </AssociationSet>
@@ -141,7 +141,7 @@
     <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Rating" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Date" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
     <Property Name="User_Id" Type="int" Nullable="false" />
     <Property Name="Media_Id" Type="int" Nullable="false" />
   </EntityType>
@@ -237,7 +237,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="ReviewMedia">
+  <Association Name="MediaReview">
     <End Role="Review" Type="VideoStoreEntityModel.Store.Reviews" Multiplicity="*" />
     <End Role="Media" Type="VideoStoreEntityModel.Store.Media" Multiplicity="1" />
     <ReferentialConstraint>
@@ -319,7 +319,7 @@
             <End Role="Review" EntitySet="Reviews" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
-          <AssociationSet Name="ReviewMedia" Association="VideoStoreEntityModel.ReviewMedia">
+          <AssociationSet Name="MediaReview" Association="VideoStoreEntityModel.MediaReview">
             <End Role="Review" EntitySet="Reviews" />
             <End Role="Media" EntitySet="Media" />
           </AssociationSet>
@@ -338,7 +338,6 @@
           <NavigationProperty Name="Roles" Relationship="VideoStoreEntityModel.UserRole" FromRole="User" ToRole="Role" />
           <Property Name="City" Type="String" Nullable="false" />
           <Property Name="Country" Type="String" Nullable="false" />
-          <NavigationProperty Name="Reviews" Relationship="VideoStoreEntityModel.ReviewUser" FromRole="User" ToRole="Review" />
         </EntityType>
         <EntityType Name="Delivery">
           <Key>
@@ -412,7 +411,6 @@
           <Property Type="String" Name="Genre" Nullable="false" />
           <Property Type="Decimal" Name="Price" Nullable="false" />
           <NavigationProperty Name="Stocks" Relationship="VideoStoreEntityModel.MediaStock" FromRole="Media" ToRole="Stock" />
-          <NavigationProperty Name="Reviews" Relationship="VideoStoreEntityModel.ReviewMedia" FromRole="Media" ToRole="Review" />
         </EntityType>
         <Association Name="OrderItemMedia">
           <End Type="VideoStoreEntityModel.OrderItem" Role="OrderItem" Multiplicity="*" />
@@ -442,15 +440,15 @@
           <Property Name="Title" Type="String" Nullable="false" />
           <Property Name="Content" Type="String" Nullable="false" />
           <Property Name="Rating" Type="String" Nullable="false" />
-          <Property Name="Date" Type="String" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="User" Relationship="VideoStoreEntityModel.ReviewUser" FromRole="Review" ToRole="User" />
-          <NavigationProperty Name="Media" Relationship="VideoStoreEntityModel.ReviewMedia" FromRole="Review" ToRole="Media" />
+          <NavigationProperty Name="Media" Relationship="VideoStoreEntityModel.MediaReview" FromRole="Review" ToRole="Media" />
         </EntityType>
         <Association Name="ReviewUser">
           <End Type="VideoStoreEntityModel.Review" Role="Review" Multiplicity="*" />
           <End Type="VideoStoreEntityModel.User" Role="User" Multiplicity="1" />
         </Association>
-        <Association Name="ReviewMedia">
+        <Association Name="MediaReview">
           <End Type="VideoStoreEntityModel.Review" Role="Review" Multiplicity="*" />
           <End Type="VideoStoreEntityModel.Media" Role="Media" Multiplicity="1" />
         </Association>
@@ -614,7 +612,7 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="ReviewMedia" TypeName="VideoStoreEntityModel.ReviewMedia" StoreEntitySet="Reviews">
+    <AssociationSetMapping Name="MediaReview" TypeName="VideoStoreEntityModel.MediaReview" StoreEntitySet="Reviews">
       <EndProperty Name="Media">
         <ScalarProperty Name="Id" ColumnName="Media_Id" />
       </EndProperty>
@@ -677,9 +675,9 @@
           <ConnectorPoint PointX="6.75" PointY="2.9373478190104167" />
         </AssociationConnector>
         <AssociationConnector Association="VideoStoreEntityModel.MediaStock" />
-        <EntityTypeShape EntityType="VideoStoreEntityModel.Review" Width="1.5" PointX="9.75" PointY="5.375" />
+        <EntityTypeShape EntityType="VideoStoreEntityModel.Review" Width="1.5" PointX="10" PointY="5.25" />
         <AssociationConnector Association="VideoStoreEntityModel.ReviewUser" />
-        <AssociationConnector Association="VideoStoreEntityModel.ReviewMedia" />
+        <AssociationConnector Association="VideoStoreEntityModel.MediaReview" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

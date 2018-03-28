@@ -17,7 +17,6 @@ namespace VideoStore.Services.MessageTypes
         public LoginCredential LoginCredential {get; set;}
         public byte[] Revision { get; set; }
 
-
         public string UserName
         {
             get

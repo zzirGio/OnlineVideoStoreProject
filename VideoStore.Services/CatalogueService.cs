@@ -23,8 +23,6 @@ namespace VideoStore.Services
         public List<Media> GetMediaItems(int pOffset, int pCount)
         {
             var internalResult = CatalogueProvider.GetMediaItems(pOffset, pCount);
-            // fails if Media object is not fully populated.
-            // Need to look if Review is loaded in memory
             var externalResult = MessageTypeConverter.Instance.Convert<
                 List<VideoStore.Business.Entities.Media>,
                 List<VideoStore.Services.MessageTypes.Media>>(internalResult);

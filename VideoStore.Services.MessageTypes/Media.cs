@@ -13,7 +13,5 @@ namespace VideoStore.Services.MessageTypes
         public String Genre { get; set; }
         public decimal Price { get; set; }
         public int StockCount { get; set; }
-
-        public ICollection<Review> Reviews { get; set; }
     }
 }

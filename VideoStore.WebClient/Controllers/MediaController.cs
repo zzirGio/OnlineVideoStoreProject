@@ -14,11 +14,6 @@ namespace VideoStore.WebClient.Controllers
 {
     public class MediaController : Controller
     {
-        private IReviewService reviewService
-        {
-            get { return ServiceFactory.Instance.ReviewService; }
-        }
-
         // GET: Media
         public ActionResult Index()
         {
@@ -29,42 +24,46 @@ namespace VideoStore.WebClient.Controllers
         {
             // get Media item
             var media = ServiceFactory.Instance.CatalogueService.GetMediaById(mediaId);
+            var reviews = ServiceFactory.Instance.ReviewService.GetReviewsByMedia(media.Id);
             var vm = new MediaDetailsViewModel
             {
-                Media = media
+                Media = media,
+                Reviews = reviews
             };
 
             return View(vm);
         }
 
         [HttpGet]
-        public ActionResult CreateReview(Media pMedia, string username)
+        public ActionResult CreateReview(int pMediaId)
         {
+            var media = ServiceFactory.Instance.CatalogueService.GetMediaById(pMediaId);
             var user = ServiceFactory.Instance.UserService.GetUserByUserName(User.Identity.GetUserName());
             var vm = new CreateReviewViewModel
             {
                 ReviewDate = DateTime.Now,
-                ReviewerName = user.Name,
-                Media = pMedia,
+                Media = media,
                 User = user
             };
             return View(vm);
         }
 
         [HttpPost]
-        public ActionResult CreateReview(CreateReviewViewModel vm)
+        public ActionResult CreateReview(CreateReviewViewModel vm, int pMediaId, string pUserName)
         {
-            Review newReview = new Review
+            var media = ServiceFactory.Instance.CatalogueService.GetMediaById(pMediaId);
+            var user = ServiceFactory.Instance.UserService.GetUserByUserName(pUserName);
+            var newReview = new Review
             {
                 Title = vm.Title,
                 Content = vm.Content,
                 Rating = vm.Rating,
                 Date = vm.ReviewDate,
-                User = vm.User,
-                Media = vm.Media
+                User = user,
+                Media = media
             };
 
-            reviewService.CreateReview(newReview);
+            ServiceFactory.Instance.ReviewService.CreateReview(newReview);
             return RedirectToAction("Details", new {mediaId = vm.Media.Id});
         }
     }

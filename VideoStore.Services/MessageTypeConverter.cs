@@ -35,19 +35,7 @@ namespace VideoStore.Services
         {
             AutoMapper.Mapper.CreateMap<VideoStore.Business.Entities.Media,
                 VideoStore.Services.MessageTypes.Media>()
-                .ForMember(dest => dest.StockCount, opts => opts.MapFrom( src => src.Stocks.Quantity))
-                .ForMember(dest => dest.Reviews, opts => opts.NullSubstitute(new List<Media>()));
-
-            // Try to handle when a media item has no reviews
-//            AutoMapper.Mapper.CreateMap<VideoStore.Business.Entities.Media,
-//                VideoStore.Services.MessageTypes.Media>().ForMember(
-//                dest => dest.Reviews, opts => opts.MapFrom(src => src.Reviews));
-
-//            AutoMapper.Mapper.CreateMap<VideoStore.Business.Entities.Media,
-//                VideoStore.Services.MessageTypes.Media>()
-//                .ForMember(dest => dest.Reviews
-//                    , opt => opt.NullSubstitute(new List<VideoStore.Services.MessageTypes.Review>())
-//                );
+                .ForMember(dest => dest.StockCount, opts => opts.MapFrom( src => src.Stocks.Quantity));
 
             AutoMapper.Mapper.CreateMap<VideoStore.Business.Entities.Order,
                 VideoStore.Services.MessageTypes.Order>();

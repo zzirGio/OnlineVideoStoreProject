@@ -1,4 +1,5 @@
-﻿@model VideoStore.WebClient.ViewModels.CreateReviewViewModel
+﻿@using VideoStore.WebClient.ViewModels
+@model VideoStore.WebClient.ViewModels.CreateReviewViewModel
 
 @{
     ViewBag.Title = "CreateReview";
@@ -6,11 +7,8 @@
 }
 
 <h2>Create Review</h2>
-
-@using (Html.BeginForm("CreateReview", "Media", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{   
-    @Html.HiddenFor(m => m.Media)
-    @Html.HiddenFor(m => m.User)
+@using (Html.BeginForm("CreateReview", "Media", new { pMediaId = Model.Media.Id, pUserName = Model.User.UserName }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
     <div>
         <h4>Write your Review</h4>
         <hr />
@@ -22,7 +20,7 @@
             <br />
             <dt>Review Name:</dt>
             <dd>
-                @Html.DisplayFor(m => m.ReviewerName)
+                @Html.DisplayFor(m => m.User.UserName)
             </dd>
             <br />
             <dt>Location:</dt>
@@ -33,19 +31,16 @@
             <dt>Title:</dt>
             <dd>
                 @Html.TextBoxFor(m => m.Title)
-                @Html.ValidationMessageFor(m => m.Title)
             </dd>
             <br />
             <dt>Content:</dt>
             <dd>
-                @Html.TextBoxFor(m => m.Content)
-                @Html.ValidationMessageFor(m => m.Content)
+                @Html.TextAreaFor(m => m.Content)
             </dd>
             <br />
             <dt>Rating:</dt>
             <dd>
-                @Html.TextBoxFor(m => m.Rating)
-                @Html.ValidationMessageFor(m => m.Rating)
+                @Html.DropDownListFor(x => x.Rating, new SelectList(new int[] { 1, 2, 3, 4, 5 }))
             </dd>
         </dl>
     </div>

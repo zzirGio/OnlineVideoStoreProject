@@ -155,7 +155,7 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="ReviewMedia" TypeName="VideoStoreEntityModel.ReviewMedia" StoreEntitySet="Reviews">
+    <AssociationSetMapping Name="MediaReview" TypeName="VideoStoreEntityModel.MediaReview" StoreEntitySet="Reviews">
       <EndProperty Name="Media">
         <ScalarProperty Name="Id" ColumnName="Media_Id" />
       </EndProperty>

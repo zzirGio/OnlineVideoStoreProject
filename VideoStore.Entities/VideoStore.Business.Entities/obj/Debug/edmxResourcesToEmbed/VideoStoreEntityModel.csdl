@@ -42,7 +42,7 @@
       <End Role="Review" EntitySet="Reviews" />
       <End Role="User" EntitySet="Users" />
     </AssociationSet>
-    <AssociationSet Name="ReviewMedia" Association="VideoStoreEntityModel.ReviewMedia">
+    <AssociationSet Name="MediaReview" Association="VideoStoreEntityModel.MediaReview">
       <End Role="Review" EntitySet="Reviews" />
       <End Role="Media" EntitySet="Media" />
     </AssociationSet>
@@ -61,7 +61,6 @@
     <NavigationProperty Name="Roles" Relationship="VideoStoreEntityModel.UserRole" FromRole="User" ToRole="Role" />
     <Property Name="City" Type="String" Nullable="false" />
     <Property Name="Country" Type="String" Nullable="false" />
-    <NavigationProperty Name="Reviews" Relationship="VideoStoreEntityModel.ReviewUser" FromRole="User" ToRole="Review" />
   </EntityType>
   <EntityType Name="Delivery">
     <Key>
@@ -135,7 +134,6 @@
     <Property Type="String" Name="Genre" Nullable="false" />
     <Property Type="Decimal" Name="Price" Nullable="false" />
     <NavigationProperty Name="Stocks" Relationship="VideoStoreEntityModel.MediaStock" FromRole="Media" ToRole="Stock" />
-    <NavigationProperty Name="Reviews" Relationship="VideoStoreEntityModel.ReviewMedia" FromRole="Media" ToRole="Review" />
   </EntityType>
   <Association Name="OrderItemMedia">
     <End Type="VideoStoreEntityModel.OrderItem" Role="OrderItem" Multiplicity="*" />
@@ -165,15 +163,15 @@
     <Property Name="Title" Type="String" Nullable="false" />
     <Property Name="Content" Type="String" Nullable="false" />
     <Property Name="Rating" Type="String" Nullable="false" />
-    <Property Name="Date" Type="String" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" />
     <NavigationProperty Name="User" Relationship="VideoStoreEntityModel.ReviewUser" FromRole="Review" ToRole="User" />
-    <NavigationProperty Name="Media" Relationship="VideoStoreEntityModel.ReviewMedia" FromRole="Review" ToRole="Media" />
+    <NavigationProperty Name="Media" Relationship="VideoStoreEntityModel.MediaReview" FromRole="Review" ToRole="Media" />
   </EntityType>
   <Association Name="ReviewUser">
     <End Type="VideoStoreEntityModel.Review" Role="Review" Multiplicity="*" />
     <End Type="VideoStoreEntityModel.User" Role="User" Multiplicity="1" />
   </Association>
-  <Association Name="ReviewMedia">
+  <Association Name="MediaReview">
     <End Type="VideoStoreEntityModel.Review" Role="Review" Multiplicity="*" />
     <End Type="VideoStoreEntityModel.Media" Role="Media" Multiplicity="1" />
   </Association>

@@ -10,17 +10,19 @@ namespace VideoStore.WebClient.ViewModels
     {
         public Media Media { get; set; }
 
+        public IEnumerable<Review> Reviews { get; set; }
+
         public double AverageRating
         {
             get
             {
                 var sum = 0.0f;
-                foreach (var review in this.Media.Reviews)
+                foreach (var review in this.Reviews)
                 {
                     sum += review.Rating;
                 }
 
-                return sum / Math.Max(1, this.Media.Reviews.Count());
+                return sum / Math.Max(1, this.Reviews.Count());
             }
         }
     }
