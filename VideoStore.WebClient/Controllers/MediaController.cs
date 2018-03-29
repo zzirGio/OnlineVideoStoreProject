@@ -25,6 +25,13 @@ namespace VideoStore.WebClient.Controllers
             // get Media item
             var media = ServiceFactory.Instance.CatalogueService.GetMediaById(mediaId);
             var reviews = ServiceFactory.Instance.ReviewService.GetReviewsByMedia(media.Id);
+
+            foreach (var review in reviews)
+            {
+                review.Media = media;
+                review.User = ServiceFactory.Instance.UserService.ReadUserById(review.UserId);
+            }
+
             var vm = new MediaDetailsViewModel
             {
                 Media = media,
@@ -64,7 +71,7 @@ namespace VideoStore.WebClient.Controllers
             };
 
             ServiceFactory.Instance.ReviewService.CreateReview(newReview);
-            return RedirectToAction("Details", new {mediaId = vm.Media.Id});
+            return RedirectToAction("Details", new {mediaId = pMediaId});
         }
     }
 }

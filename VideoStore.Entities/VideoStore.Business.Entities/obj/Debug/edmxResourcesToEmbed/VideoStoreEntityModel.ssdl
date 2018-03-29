@@ -47,7 +47,7 @@
       <End Role="Review" EntitySet="Reviews" />
       <End Role="User" EntitySet="Users" />
     </AssociationSet>
-    <AssociationSet Name="MediaReview" Association="VideoStoreEntityModel.Store.MediaReview">
+    <AssociationSet Name="ReviewMedia" Association="VideoStoreEntityModel.Store.ReviewMedia">
       <End Role="Review" EntitySet="Reviews" />
       <End Role="Media" EntitySet="Media" />
     </AssociationSet>
@@ -137,8 +137,8 @@
     <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Rating" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Date" Type="datetime" Nullable="false" />
-    <Property Name="User_Id" Type="int" Nullable="false" />
-    <Property Name="Media_Id" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="MediaId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="UserRole">
     <Key>
@@ -228,11 +228,11 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Review">
-        <PropertyRef Name="User_Id" />
+        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="MediaReview">
+  <Association Name="ReviewMedia">
     <End Role="Review" Type="VideoStoreEntityModel.Store.Reviews" Multiplicity="*" />
     <End Role="Media" Type="VideoStoreEntityModel.Store.Media" Multiplicity="1" />
     <ReferentialConstraint>
@@ -240,7 +240,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Review">
-        <PropertyRef Name="Media_Id" />
+        <PropertyRef Name="MediaId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

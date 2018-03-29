@@ -21,7 +21,7 @@
 <table>
     <tr>
         <th>Reviews</th>
-        <th>@Html.ActionLink("Create Review", "CreateReview", "Media", new { pMediaId = Model.Media.Id, pUser = User.Identity.GetUserName()}, null)</th>
+        <th>@Html.ActionLink("Create Review", "CreateReview", "Media", new { pMediaId = Model.Media.Id, pUser = User.Identity.GetUserId()}, null)</th>
     </tr>
     @foreach (var item in Model.Reviews)
     {
@@ -31,7 +31,7 @@
                 @item.Rating |
                 @item.Date |
                 @item.Content |
-                @item.User.LocationString |
+                @item.User.LocationString | @*Errors here Review.User Object is not getting mapped..*@
                 @item.User.Name |
             </td>
         </tr>

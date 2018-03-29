@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/28/2018 22:39:32
--- Generated from EDMX file: E:\comp5348\OnlineVideoStoreProject\VideoStore.Entities\VideoStore.Business.Entities\VideoStoreEntityModel.edmx
+-- Date Created: 03/29/2018 17:46:00
+-- Generated from EDMX file: C:\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Entities\VideoStore.Business.Entities\VideoStoreEntityModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -44,8 +44,8 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_ReviewUser]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Reviews] DROP CONSTRAINT [FK_ReviewUser];
 GO
-IF OBJECT_ID(N'[dbo].[FK_ReviewMedia]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Reviews] DROP CONSTRAINT [FK_ReviewMedia];
+IF OBJECT_ID(N'[dbo].[FK_MediaReview]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Reviews] DROP CONSTRAINT [FK_MediaReview];
 GO
 
 -- --------------------------------------------------
@@ -170,8 +170,8 @@ CREATE TABLE [dbo].[Reviews] (
     [Content] nvarchar(max)  NOT NULL,
     [Rating] nvarchar(max)  NOT NULL,
     [Date] datetime  NOT NULL,
-    [User_Id] int  NOT NULL,
-    [Media_Id] int  NOT NULL
+    [UserId] int  NOT NULL,
+    [MediaId] int  NOT NULL
 );
 GO
 
@@ -364,10 +364,10 @@ ON [dbo].[Media]
     ([Stocks_Id]);
 GO
 
--- Creating foreign key on [User_Id] in table 'Reviews'
+-- Creating foreign key on [UserId] in table 'Reviews'
 ALTER TABLE [dbo].[Reviews]
 ADD CONSTRAINT [FK_ReviewUser]
-    FOREIGN KEY ([User_Id])
+    FOREIGN KEY ([UserId])
     REFERENCES [dbo].[Users]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -376,22 +376,22 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_ReviewUser'
 CREATE INDEX [IX_FK_ReviewUser]
 ON [dbo].[Reviews]
-    ([User_Id]);
+    ([UserId]);
 GO
 
--- Creating foreign key on [Media_Id] in table 'Reviews'
+-- Creating foreign key on [MediaId] in table 'Reviews'
 ALTER TABLE [dbo].[Reviews]
-ADD CONSTRAINT [FK_MediaReview]
-    FOREIGN KEY ([Media_Id])
+ADD CONSTRAINT [FK_ReviewMedia]
+    FOREIGN KEY ([MediaId])
     REFERENCES [dbo].[Media]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_MediaReview'
-CREATE INDEX [IX_FK_MediaReview]
+-- Creating non-clustered index for FOREIGN KEY 'FK_ReviewMedia'
+CREATE INDEX [IX_FK_ReviewMedia]
 ON [dbo].[Reviews]
-    ([Media_Id]);
+    ([MediaId]);
 GO
 
 -- --------------------------------------------------

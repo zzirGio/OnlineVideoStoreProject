@@ -87,6 +87,8 @@
           <ScalarProperty Name="Content" ColumnName="Content" />
           <ScalarProperty Name="Rating" ColumnName="Rating" />
           <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="MediaId" ColumnName="MediaId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -144,22 +146,6 @@
         <ScalarProperty Name="Id" ColumnName="Stocks_Id" />
       </EndProperty>
       <EndProperty Name="Media">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="ReviewUser" TypeName="VideoStoreEntityModel.ReviewUser" StoreEntitySet="Reviews">
-      <EndProperty Name="User">
-        <ScalarProperty Name="Id" ColumnName="User_Id" />
-      </EndProperty>
-      <EndProperty Name="Review">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="MediaReview" TypeName="VideoStoreEntityModel.MediaReview" StoreEntitySet="Reviews">
-      <EndProperty Name="Media">
-        <ScalarProperty Name="Id" ColumnName="Media_Id" />
-      </EndProperty>
-      <EndProperty Name="Review">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>

@@ -16,6 +16,7 @@ namespace VideoStore.Business.Components
         {
             using (VideoStoreEntityModelContainer lContainer = new VideoStoreEntityModelContainer())
             {
+                lContainer.Configuration.ProxyCreationEnabled = false;
                 return lContainer.Reviews.Where(p => p.Media.Id == mediaId).ToList();
             }
         }
@@ -24,6 +25,7 @@ namespace VideoStore.Business.Components
         {
             using (VideoStoreEntityModelContainer lContainer = new VideoStoreEntityModelContainer())
             {
+                lContainer.Configuration.ProxyCreationEnabled = false;
                 return lContainer.Reviews.Where(p => p.User.Id == userId).ToList();
             }
         }
@@ -41,6 +43,12 @@ namespace VideoStore.Business.Components
             using (TransactionScope lScope = new TransactionScope())
             using (VideoStoreEntityModelContainer lContainer = new VideoStoreEntityModelContainer())
             {
+                Media media = lContainer.Media.FirstOrDefault(s => s.Id == pReview.Media.Id);
+                User user = lContainer.Users.FirstOrDefault(s => s.Id == pReview.User.Id);
+                pReview.Media = media;
+                pReview.User = user;
+                pReview.Date = DateTime.Now;
+
                 lContainer.Reviews.Add(pReview);
                 lContainer.SaveChanges();
                 lScope.Complete();
