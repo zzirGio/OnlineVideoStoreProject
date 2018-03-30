@@ -167,6 +167,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ListMediaDataController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MediaController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
@@ -196,6 +197,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\app\ListMediaWebApi\appListMediaWebApi.js" />
+    <Content Include="Scripts\axios.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Properties\DataSources\VideoStore.Business.Entities.Media.datasource" />
@@ -212,6 +215,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\vue.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -240,6 +244,7 @@
     <Content Include="Views\Cart\InsufficientStock.cshtml" />
     <Content Include="Views\Media\Details.cshtml" />
     <Content Include="Views\Media\CreateReview.cshtml" />
+    <Content Include="Views\Store\ListMediaWebApi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

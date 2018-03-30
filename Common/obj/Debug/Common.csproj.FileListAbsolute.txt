@@ -67,8 +67,3 @@ C:\uni_projects\comp5348\OnlineVideoStoreProject\Common\obj\Debug\Common.csprojR
 C:\uni_projects\comp5348\OnlineVideoStoreProject\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
 C:\uni_projects\comp5348\OnlineVideoStoreProject\Common\obj\Debug\Common.dll
 C:\uni_projects\comp5348\OnlineVideoStoreProject\Common\obj\Debug\Common.pdb
-E:\comp5348\OnlineVideoStoreProject\Common\bin\Debug\Common.dll
-E:\comp5348\OnlineVideoStoreProject\Common\bin\Debug\Common.pdb
-E:\comp5348\OnlineVideoStoreProject\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
-E:\comp5348\OnlineVideoStoreProject\Common\obj\Debug\Common.dll
-E:\comp5348\OnlineVideoStoreProject\Common\obj\Debug\Common.pdb
