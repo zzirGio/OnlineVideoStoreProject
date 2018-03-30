@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using VideoStore.Services.MessageTypes;
@@ -12,6 +13,7 @@ namespace VideoStore.WebClient.ViewModels
 
         public IEnumerable<Review> Reviews { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:0.00}", ApplyFormatInEditMode = true)]
         public double AverageRating
         {
             get

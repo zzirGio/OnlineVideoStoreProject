@@ -62,8 +62,8 @@ namespace VideoStore.WebClient.ViewModels
         {
             pUser.Email = Email;
             pUser.Address = Address;
-            pUser.Address = City;
-            pUser.Address = Country;
+            pUser.City = City;
+            pUser.Country = Country;
             return pUser;
         }
     }

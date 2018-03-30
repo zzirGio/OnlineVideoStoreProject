@@ -79,3 +79,4 @@ E:\comp5348\OnlineVideoStoreProject\VideoStore.Process\obj\x86\Debug\VideoStore.
 E:\comp5348\OnlineVideoStoreProject\VideoStore.Process\obj\x86\Debug\VideoStore.Process.exe
 E:\comp5348\OnlineVideoStoreProject\VideoStore.Process\obj\x86\Debug\VideoStore.Process.pdb
 C:\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Process\bin\Debug\AutoMapper.Net4.dll
+E:\comp5348\OnlineVideoStoreProject\VideoStore.Process\bin\Debug\AutoMapper.Net4.dll
