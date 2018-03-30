@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/29/2018 17:46:00
--- Generated from EDMX file: C:\uni_projects\comp5348\OnlineVideoStoreProject\VideoStore.Entities\VideoStore.Business.Entities\VideoStoreEntityModel.edmx
+-- Date Created: 03/30/2018 16:41:03
+-- Generated from EDMX file: E:\comp5348\OnlineVideoStoreProject\VideoStore.Entities\VideoStore.Business.Entities\VideoStoreEntityModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -44,8 +44,8 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_ReviewUser]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Reviews] DROP CONSTRAINT [FK_ReviewUser];
 GO
-IF OBJECT_ID(N'[dbo].[FK_MediaReview]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Reviews] DROP CONSTRAINT [FK_MediaReview];
+IF OBJECT_ID(N'[dbo].[FK_ReviewMedia]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Reviews] DROP CONSTRAINT [FK_ReviewMedia];
 GO
 
 -- --------------------------------------------------
@@ -166,8 +166,8 @@ GO
 -- Creating table 'Reviews'
 CREATE TABLE [dbo].[Reviews] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [Title] nvarchar(max)  NOT NULL,
-    [Content] nvarchar(max)  NOT NULL,
+    [Title] nvarchar(max)  NULL,
+    [Content] nvarchar(max)  NULL,
     [Rating] nvarchar(max)  NOT NULL,
     [Date] datetime  NOT NULL,
     [UserId] int  NOT NULL,

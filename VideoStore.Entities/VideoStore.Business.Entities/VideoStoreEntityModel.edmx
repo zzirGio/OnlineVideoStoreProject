@@ -138,8 +138,8 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Rating" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Date" Type="datetime" Nullable="false" />
     <Property Name="UserId" Type="int" Nullable="false" />
@@ -439,8 +439,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" Nullable="false" />
-          <Property Name="Content" Type="String" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="true" />
+          <Property Name="Content" Type="String" Nullable="true" />
           <Property Name="Rating" Type="String" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="User" Relationship="VideoStoreEntityModel.ReviewUser" FromRole="Review" ToRole="User" />
