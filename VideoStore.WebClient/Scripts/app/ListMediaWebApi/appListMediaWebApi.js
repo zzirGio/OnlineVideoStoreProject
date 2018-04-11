@@ -8,7 +8,7 @@
     },
     methods: {
         getItems() {
-            axios.get("/ListMediaData/GetAllMedia").then(response => {
+            axios.get("../api/ListMediaData/").then(response => {
                 this.mediaList = response.data;
             });
         },

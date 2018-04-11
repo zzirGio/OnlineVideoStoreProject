@@ -510,7 +510,10 @@ E:\comp5348\OnlineVideoStoreProject\VideoStore.WebClient\bin\Microsoft.Owin.Secu
 E:\comp5348\OnlineVideoStoreProject\VideoStore.WebClient\bin\Microsoft.Web.Infrastructure.dll
 E:\comp5348\OnlineVideoStoreProject\VideoStore.WebClient\bin\Newtonsoft.Json.dll
 E:\comp5348\OnlineVideoStoreProject\VideoStore.WebClient\bin\Owin.dll
+E:\comp5348\OnlineVideoStoreProject\VideoStore.WebClient\bin\System.Net.Http.Formatting.dll
 E:\comp5348\OnlineVideoStoreProject\VideoStore.WebClient\bin\System.Web.Helpers.dll
+E:\comp5348\OnlineVideoStoreProject\VideoStore.WebClient\bin\System.Web.Http.dll
+E:\comp5348\OnlineVideoStoreProject\VideoStore.WebClient\bin\System.Web.Http.WebHost.dll
 E:\comp5348\OnlineVideoStoreProject\VideoStore.WebClient\bin\System.Web.Mvc.dll
 E:\comp5348\OnlineVideoStoreProject\VideoStore.WebClient\bin\System.Web.Optimization.dll
 E:\comp5348\OnlineVideoStoreProject\VideoStore.WebClient\bin\System.Web.Razor.dll
@@ -523,6 +526,9 @@ E:\comp5348\OnlineVideoStoreProject\VideoStore.WebClient\bin\WebGrease.dll
 E:\comp5348\OnlineVideoStoreProject\VideoStore.WebClient\bin\Common.pdb
 E:\comp5348\OnlineVideoStoreProject\VideoStore.WebClient\bin\VideoStore.Services.Interfaces.pdb
 E:\comp5348\OnlineVideoStoreProject\VideoStore.WebClient\bin\VideoStore.Services.MessageTypes.pdb
+E:\comp5348\OnlineVideoStoreProject\VideoStore.WebClient\bin\System.Net.Http.Formatting.xml
+E:\comp5348\OnlineVideoStoreProject\VideoStore.WebClient\bin\System.Web.Http.xml
+E:\comp5348\OnlineVideoStoreProject\VideoStore.WebClient\bin\System.Web.Http.WebHost.xml
 E:\comp5348\OnlineVideoStoreProject\VideoStore.WebClient\bin\System.Web.Helpers.xml
 E:\comp5348\OnlineVideoStoreProject\VideoStore.WebClient\bin\System.Web.Mvc.xml
 E:\comp5348\OnlineVideoStoreProject\VideoStore.WebClient\bin\System.Web.Optimization.xml
