@@ -26,9 +26,9 @@ namespace VideoStore.Services
             return externalResult;
         }
 
-        public List<Review> GetReviewsByUsers(int userId)
+        public List<Review> GetReviewsByUser(int userId)
         {
-            var internalResult = ReviewProvider.GetReviewsByUsers(userId);
+            var internalResult = ReviewProvider.GetReviewsByUser(userId);
             var externalResult = MessageTypeConverter.Instance.Convert<
                 List<VideoStore.Business.Entities.Review>,
                 List<VideoStore.Services.MessageTypes.Review>>(internalResult);
@@ -42,6 +42,16 @@ namespace VideoStore.Services
             var externalResult = MessageTypeConverter.Instance.Convert<
                 VideoStore.Business.Entities.Review,
                 VideoStore.Services.MessageTypes.Review>(internalResult);
+
+            return externalResult;
+        }
+
+        public ReviewAuthor GetReviewAuthorByReview(int reviewId)
+        {
+            var internalResult = ReviewProvider.GetReviewAuthorByReview(reviewId);
+            var externalResult = MessageTypeConverter.Instance.Convert<
+                VideoStore.Business.Entities.User,
+                VideoStore.Services.MessageTypes.ReviewAuthor>(internalResult);
 
             return externalResult;
         }

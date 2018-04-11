@@ -10,8 +10,9 @@ namespace VideoStore.Business.Components.Interfaces
     public interface IReviewProvider
     {
         List<Review> GetReviewsByMedia(int mediaId);
-        List<Review> GetReviewsByUsers(int userId);
+        List<Review> GetReviewsByUser(int userId);
         Review GetReviewById(int id);
+        User GetReviewAuthorByReview(int reviewId);
         void CreateReview(Review pReview);
         void UpdateReview(Review pReview);
         void DeleteReview(Review pReview);

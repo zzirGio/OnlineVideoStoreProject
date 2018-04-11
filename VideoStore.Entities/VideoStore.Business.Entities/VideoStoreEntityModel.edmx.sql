@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/30/2018 16:41:03
+-- Date Created: 04/11/2018 20:24:57
 -- Generated from EDMX file: E:\comp5348\OnlineVideoStoreProject\VideoStore.Entities\VideoStore.Business.Entities\VideoStoreEntityModel.edmx
 -- --------------------------------------------------
 
@@ -152,6 +152,8 @@ CREATE TABLE [dbo].[Media] (
     [Director] nvarchar(max)  NOT NULL,
     [Genre] nvarchar(max)  NOT NULL,
     [Price] decimal(18,0)  NOT NULL,
+    [RatingsSum] decimal(18,0)  NOT NULL,
+    [RatingsCount] int  NOT NULL,
     [Stocks_Id] uniqueidentifier  NOT NULL
 );
 GO
@@ -168,7 +170,7 @@ CREATE TABLE [dbo].[Reviews] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Title] nvarchar(max)  NULL,
     [Content] nvarchar(max)  NULL,
-    [Rating] nvarchar(max)  NOT NULL,
+    [Rating] decimal(18,0)  NOT NULL,
     [Date] datetime  NOT NULL,
     [UserId] int  NOT NULL,
     [MediaId] int  NOT NULL

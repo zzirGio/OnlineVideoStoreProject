@@ -22,20 +22,21 @@ namespace VideoStore.WebClient.Controllers
 
         public ActionResult Details(int mediaId)
         {
-            // get Media item
             var media = ServiceFactory.Instance.CatalogueService.GetMediaById(mediaId);
-            var reviews = ServiceFactory.Instance.ReviewService.GetReviewsByMedia(media.Id);
+            var reviews = ServiceFactory.Instance.ReviewService.GetReviewsByMedia(mediaId);
 
-            foreach (var review in reviews)
+            var reviewAuthors = new List<KeyValuePair<Review, ReviewAuthor>>();
+
+            foreach (var r in reviews)
             {
-                review.Media = media;
-                review.User = ServiceFactory.Instance.UserService.ReadUserById(review.UserId);
+                var reviewAuthor = ServiceFactory.Instance.ReviewService.GetReviewAuthorByReview(r.UserId);
+                reviewAuthors.Add(new KeyValuePair<Review, ReviewAuthor>(r, reviewAuthor));
             }
 
             var vm = new MediaDetailsViewModel
             {
                 Media = media,
-                Reviews = reviews
+                Reviews = reviewAuthors
             };
 
             return View(vm);
@@ -66,8 +67,8 @@ namespace VideoStore.WebClient.Controllers
                 Content = vm.Content,
                 Rating = vm.Rating,
                 Date = vm.ReviewDate,
-                User = user,
-                Media = media
+                UserId = user.Id,
+                MediaId = media.Id
             };
 
             ServiceFactory.Instance.ReviewService.CreateReview(newReview);

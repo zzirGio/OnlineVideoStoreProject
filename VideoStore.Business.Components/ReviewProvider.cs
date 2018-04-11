@@ -21,7 +21,7 @@ namespace VideoStore.Business.Components
             }
         }
 
-        public List<Review> GetReviewsByUsers(int userId)
+        public List<Review> GetReviewsByUser(int userId)
         {
             using (VideoStoreEntityModelContainer lContainer = new VideoStoreEntityModelContainer())
             {
@@ -38,16 +38,28 @@ namespace VideoStore.Business.Components
             }
         }
 
+        public User GetReviewAuthorByReview(int reviewId)
+        {
+            using (VideoStoreEntityModelContainer lContainer = new VideoStoreEntityModelContainer())
+            {
+                return lContainer.Users.First(p => p.Id == reviewId);
+            }
+        }
+
         public void CreateReview(Review pReview)
         {
             using (TransactionScope lScope = new TransactionScope())
             using (VideoStoreEntityModelContainer lContainer = new VideoStoreEntityModelContainer())
             {
-                Media media = lContainer.Media.FirstOrDefault(s => s.Id == pReview.Media.Id);
-                User user = lContainer.Users.FirstOrDefault(s => s.Id == pReview.User.Id);
+                Media media = lContainer.Media.FirstOrDefault(s => s.Id == pReview.MediaId);
+                User user = lContainer.Users.FirstOrDefault(s => s.Id == pReview.UserId);
                 pReview.Media = media;
                 pReview.User = user;
                 pReview.Date = DateTime.Now;
+
+                // Update changes to Media.
+                media.RatingsCount += 1;
+                media.RatingsSum += pReview.Rating;
 
                 lContainer.Reviews.Add(pReview);
                 lContainer.SaveChanges();

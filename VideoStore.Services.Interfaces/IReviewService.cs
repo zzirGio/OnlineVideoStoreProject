@@ -14,9 +14,11 @@ namespace VideoStore.Services.Interfaces
         [OperationContract]
         List<Review> GetReviewsByMedia(int mediaId);
         [OperationContract]
-        List<Review> GetReviewsByUsers(int userId);
+        List<Review> GetReviewsByUser(int userId);
         [OperationContract]
         Review GetReviewById(int id);
+        [OperationContract]
+        ReviewAuthor GetReviewAuthorByReview(int reviewId);
         [OperationContract]
         void CreateReview(Review pReview);
         [OperationContract]

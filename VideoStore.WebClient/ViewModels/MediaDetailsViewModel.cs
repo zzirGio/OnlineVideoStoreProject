@@ -10,22 +10,6 @@ namespace VideoStore.WebClient.ViewModels
     public class MediaDetailsViewModel
     {
         public Media Media { get; set; }
-
-        public IEnumerable<Review> Reviews { get; set; }
-
-        [DisplayFormat(DataFormatString = "{0:0.00}", ApplyFormatInEditMode = true)]
-        public double AverageRating
-        {
-            get
-            {
-                var sum = 0.0f;
-                foreach (var review in this.Reviews)
-                {
-                    sum += review.Rating;
-                }
-
-                return sum / Math.Max(1, this.Reviews.Count());
-            }
-        }
+        public IEnumerable<KeyValuePair<Review, ReviewAuthor>> Reviews { get; set; }
     }
 }

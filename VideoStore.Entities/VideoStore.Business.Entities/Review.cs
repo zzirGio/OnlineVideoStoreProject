@@ -17,7 +17,7 @@ namespace VideoStore.Business.Entities
         public int Id { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
-        public string Rating { get; set; }
+        public decimal Rating { get; set; }
         public System.DateTime Date { get; set; }
         public int UserId { get; set; }
         public int MediaId { get; set; }
