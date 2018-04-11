@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "ListMediaWebApi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List Media WebApi</h2>
+
+<div id="app">
+    <table>
+        <tr>
+            <th></th>
+        </tr>
+        <tr v-for="(media) in mediaList">
+            <td>
+                {{media.Title}} | Price: ${{media.Price}} | Quantity: {{media.StockCount}}
+                <form action="/Cart/AddToCart" method="post">
+                    <input id="pMediaId" name="pMediaId" type="hidden" :value="media.Id">
+                    <input id="pReturnUrl" name="pReturnUrl" type="hidden" value="/Store/ListMedia">
+                    <input type="submit" value="+ Add to Cart">
+                    <a :href="getDetailsHref(media.Id)">Details</a>
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
+
+@Scripts.Render("~/bundles/vuejs")
+@Scripts.Render("~/Scripts/app/ListMediaWebApi/appListMediaWebApi.js")

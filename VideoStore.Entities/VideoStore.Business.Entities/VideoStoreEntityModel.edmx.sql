@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 02/24/2015 20:42:41
--- Generated from EDMX file: C:\Users\MATT_Mac\Desktop\VideoStoreS12015TestedLabs(1)\VideoStore.Entities\VideoStore.Business.Entities\VideoStoreEntityModel.edmx
+-- Date Created: 04/11/2018 20:24:57
+-- Generated from EDMX file: E:\comp5348\OnlineVideoStoreProject\VideoStore.Entities\VideoStore.Business.Entities\VideoStoreEntityModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -41,6 +41,12 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_MediaStock]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Media] DROP CONSTRAINT [FK_MediaStock];
 GO
+IF OBJECT_ID(N'[dbo].[FK_ReviewUser]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Reviews] DROP CONSTRAINT [FK_ReviewUser];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ReviewMedia]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Reviews] DROP CONSTRAINT [FK_ReviewMedia];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -70,6 +76,9 @@ GO
 IF OBJECT_ID(N'[dbo].[Roles]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Roles];
 GO
+IF OBJECT_ID(N'[dbo].[Reviews]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Reviews];
+GO
 IF OBJECT_ID(N'[dbo].[UserRole]', 'U') IS NOT NULL
     DROP TABLE [dbo].[UserRole];
 GO
@@ -85,6 +94,8 @@ CREATE TABLE [dbo].[Users] (
     [Address] nvarchar(max)  NULL,
     [Email] nvarchar(max)  NOT NULL,
     [Revision] timestamp  NOT NULL,
+    [City] nvarchar(max)  NOT NULL,
+    [Country] nvarchar(max)  NOT NULL,
     [LoginCredential_Id] int  NOT NULL
 );
 GO
@@ -141,6 +152,8 @@ CREATE TABLE [dbo].[Media] (
     [Director] nvarchar(max)  NOT NULL,
     [Genre] nvarchar(max)  NOT NULL,
     [Price] decimal(18,0)  NOT NULL,
+    [RatingsSum] decimal(18,0)  NOT NULL,
+    [RatingsCount] int  NOT NULL,
     [Stocks_Id] uniqueidentifier  NOT NULL
 );
 GO
@@ -149,6 +162,18 @@ GO
 CREATE TABLE [dbo].[Roles] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'Reviews'
+CREATE TABLE [dbo].[Reviews] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Title] nvarchar(max)  NULL,
+    [Content] nvarchar(max)  NULL,
+    [Rating] decimal(18,0)  NOT NULL,
+    [Date] datetime  NOT NULL,
+    [UserId] int  NOT NULL,
+    [MediaId] int  NOT NULL
 );
 GO
 
@@ -208,6 +233,12 @@ GO
 -- Creating primary key on [Id] in table 'Roles'
 ALTER TABLE [dbo].[Roles]
 ADD CONSTRAINT [PK_Roles]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'Reviews'
+ALTER TABLE [dbo].[Reviews]
+ADD CONSTRAINT [PK_Reviews]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -333,6 +364,36 @@ GO
 CREATE INDEX [IX_FK_MediaStock]
 ON [dbo].[Media]
     ([Stocks_Id]);
+GO
+
+-- Creating foreign key on [UserId] in table 'Reviews'
+ALTER TABLE [dbo].[Reviews]
+ADD CONSTRAINT [FK_ReviewUser]
+    FOREIGN KEY ([UserId])
+    REFERENCES [dbo].[Users]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ReviewUser'
+CREATE INDEX [IX_FK_ReviewUser]
+ON [dbo].[Reviews]
+    ([UserId]);
+GO
+
+-- Creating foreign key on [MediaId] in table 'Reviews'
+ALTER TABLE [dbo].[Reviews]
+ADD CONSTRAINT [FK_ReviewMedia]
+    FOREIGN KEY ([MediaId])
+    REFERENCES [dbo].[Media]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ReviewMedia'
+CREATE INDEX [IX_FK_ReviewMedia]
+ON [dbo].[Reviews]
+    ([MediaId]);
 GO
 
 -- --------------------------------------------------

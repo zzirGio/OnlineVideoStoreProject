@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Review.cs" />
     <Compile Include="Faults\InsufficientStockFault.cs" />
     <Compile Include="LoginCredential.cs" />
     <Compile Include="Media.cs" />
@@ -50,6 +51,7 @@
     <Compile Include="Order.cs" />
     <Compile Include="OrderItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReviewAuthor.cs" />
     <Compile Include="Role.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VideoStore.Services.MessageTypes;
 
 namespace VideoStore.Services
 {
@@ -33,8 +34,10 @@ namespace VideoStore.Services
         private void InitializeInternalToExternalMappings()
         {
             AutoMapper.Mapper.CreateMap<VideoStore.Business.Entities.Media,
-                VideoStore.Services.MessageTypes.Media>().ForMember(
-                    dest => dest.StockCount, opts => opts.MapFrom( src => src.Stocks.Quantity));
+                VideoStore.Services.MessageTypes.Media>()
+                .ForMember(dest => dest.StockCount, opts => opts.MapFrom( src => src.Stocks.Quantity))
+                .ForMember(dest => dest.AverageRating, opts => opts.MapFrom(src => src.AverageRating))
+                .ForMember(dest => dest.RatingsCount, opts => opts.MapFrom(src => src.RatingsCount)); // Map Average Rating
 
             AutoMapper.Mapper.CreateMap<VideoStore.Business.Entities.Order,
                 VideoStore.Services.MessageTypes.Order>();
@@ -47,6 +50,15 @@ namespace VideoStore.Services
 
             AutoMapper.Mapper.CreateMap<VideoStore.Business.Entities.LoginCredential,
                 VideoStore.Services.MessageTypes.LoginCredential>();
+
+            AutoMapper.Mapper.CreateMap<VideoStore.Business.Entities.Review,    // Map Review
+                VideoStore.Services.MessageTypes.Review>();
+
+            AutoMapper.Mapper.CreateMap<VideoStore.Business.Entities.User, // Map ReviewAuthor
+                    VideoStore.Services.MessageTypes.ReviewAuthor>()
+                .ForMember(dest => dest.Name, opts => opts.MapFrom(src => src.Name))
+                .ForMember(dest => dest.City, opts => opts.MapFrom(src => src.City))
+                .ForMember(dest => dest.Country, opts => opts.MapFrom(src => src.Country));
         }
 
         public void InitializeExternalToInternalMappings()
@@ -65,6 +77,9 @@ namespace VideoStore.Services
 
             AutoMapper.Mapper.CreateMap<VideoStore.Services.MessageTypes.LoginCredential,
                 VideoStore.Business.Entities.LoginCredential>();
+
+            AutoMapper.Mapper.CreateMap<VideoStore.Services.MessageTypes.Review,
+                VideoStore.Business.Entities.Review>();
         }
 
         public Destination Convert<Source, Destination>(Source s)

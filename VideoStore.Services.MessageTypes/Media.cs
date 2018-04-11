@@ -12,6 +12,8 @@ namespace VideoStore.Services.MessageTypes
         public String Director { get; set; }
         public String Genre { get; set; }
         public decimal Price { get; set; }
+        public decimal AverageRating { get; set; }
+        public int RatingsCount { get; set; }
         public int StockCount { get; set; }
     }
 }

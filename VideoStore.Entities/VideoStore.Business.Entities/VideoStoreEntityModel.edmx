@@ -14,6 +14,7 @@
     <EntitySet Name="LoginCredentials" EntityType="VideoStoreEntityModel.Store.LoginCredentials" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Media" EntityType="VideoStoreEntityModel.Store.Media" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Roles" EntityType="VideoStoreEntityModel.Store.Roles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Reviews" EntityType="VideoStoreEntityModel.Store.Reviews" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserRole" EntityType="VideoStoreEntityModel.Store.UserRole" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="DeliveryOrder" Association="VideoStoreEntityModel.Store.DeliveryOrder">
       <End Role="Delivery" EntitySet="Deliveries" />
@@ -47,6 +48,14 @@
       <End Role="Media" EntitySet="Media" />
       <End Role="Stock" EntitySet="Stocks" />
     </AssociationSet>
+    <AssociationSet Name="ReviewUser" Association="VideoStoreEntityModel.Store.ReviewUser">
+      <End Role="Review" EntitySet="Reviews" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="ReviewMedia" Association="VideoStoreEntityModel.Store.ReviewMedia">
+      <End Role="Review" EntitySet="Reviews" />
+      <End Role="Media" EntitySet="Media" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Users">
     <Key>
@@ -57,6 +66,8 @@
     <Property Name="Address" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Revision" Type="varbinary(max)" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="City" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Country" Type="nvarchar(max)" Nullable="false" />
     <Property Name="LoginCredential_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Deliveries">
@@ -113,6 +124,8 @@
     <Property Name="Director" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Genre" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Price" Type="decimal" Nullable="false" />
+    <Property Name="RatingsSum" Type="decimal" Nullable="false" />
+    <Property Name="RatingsCount" Type="int" Nullable="false" DefaultValue="0" />
     <Property Name="Stocks_Id" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
   <EntityType Name="Roles">
@@ -121,6 +134,18 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Reviews">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Rating" Type="decimal" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="MediaId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="UserRole">
     <Key>
@@ -202,6 +227,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="ReviewUser">
+    <End Role="Review" Type="VideoStoreEntityModel.Store.Reviews" Multiplicity="*" />
+    <End Role="User" Type="VideoStoreEntityModel.Store.Users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ReviewMedia">
+    <End Role="Review" Type="VideoStoreEntityModel.Store.Reviews" Multiplicity="*" />
+    <End Role="Media" Type="VideoStoreEntityModel.Store.Media" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Media">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="MediaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_UserRole_User">
     <End Role="User" Type="VideoStoreEntityModel.Store.Users" Multiplicity="1" />
     <End Role="UserRole" Type="VideoStoreEntityModel.Store.UserRole" Multiplicity="*" />
@@ -267,6 +316,15 @@
             <End Role="Media" EntitySet="Media" />
             <End Role="Stock" EntitySet="Stocks" />
           </AssociationSet>
+          <EntitySet Name="Reviews" EntityType="VideoStoreEntityModel.Review" />
+          <AssociationSet Name="ReviewUser" Association="VideoStoreEntityModel.ReviewUser">
+            <End Role="Review" EntitySet="Reviews" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="ReviewMedia" Association="VideoStoreEntityModel.ReviewMedia">
+            <End Role="Review" EntitySet="Reviews" />
+            <End Role="Media" EntitySet="Media" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="User">
           <Key>
@@ -280,6 +338,9 @@
           <Property Type="String" Name="Email" Nullable="false" ConcurrencyMode="None" />
           <Property Type="Binary" Name="Revision" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <NavigationProperty Name="Roles" Relationship="VideoStoreEntityModel.UserRole" FromRole="User" ToRole="Role" />
+          <Property Name="City" Type="String" Nullable="false" />
+          <Property Name="Country" Type="String" Nullable="false" />
+          <NavigationProperty Name="Reviews" Relationship="VideoStoreEntityModel.ReviewUser" FromRole="User" ToRole="Review" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
         </EntityType>
         <EntityType Name="Delivery">
           <Key>
@@ -353,6 +414,9 @@
           <Property Type="String" Name="Genre" Nullable="false" />
           <Property Type="Decimal" Name="Price" Nullable="false" />
           <NavigationProperty Name="Stocks" Relationship="VideoStoreEntityModel.MediaStock" FromRole="Media" ToRole="Stock" />
+          <NavigationProperty Name="Reviews" Relationship="VideoStoreEntityModel.ReviewMedia" FromRole="Media" ToRole="Review" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+          <Property Name="RatingsSum" Type="Decimal" Nullable="false" />
+          <Property Name="RatingsCount" Type="Int32" Nullable="false" DefaultValue="0" />
         </EntityType>
         <Association Name="OrderItemMedia">
           <End Type="VideoStoreEntityModel.OrderItem" Role="OrderItem" Multiplicity="*" />
@@ -374,6 +438,44 @@
           <End Type="VideoStoreEntityModel.Media" Role="Media" Multiplicity="1" />
           <End Type="VideoStoreEntityModel.Stock" Role="Stock" Multiplicity="1" />
         </Association>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="true" />
+          <Property Name="Content" Type="String" Nullable="true" />
+          <Property Name="Rating" Type="Decimal" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="VideoStoreEntityModel.ReviewUser" FromRole="Review" ToRole="User" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+          <Property Name="UserId" Type="Int32" Nullable="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <NavigationProperty Name="Media" Relationship="VideoStoreEntityModel.ReviewMedia" FromRole="Review" ToRole="Media" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
+          <Property Name="MediaId" Type="Int32" Nullable="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        </EntityType>
+        <Association Name="ReviewUser">
+          <End Type="VideoStoreEntityModel.Review" Role="Review" Multiplicity="*" />
+          <End Type="VideoStoreEntityModel.User" Role="User" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ReviewMedia">
+          <End Type="VideoStoreEntityModel.Review" Role="Review" Multiplicity="*" />
+          <End Type="VideoStoreEntityModel.Media" Role="Media" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Media">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="MediaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -388,6 +490,8 @@
           <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Revision" ColumnName="Revision" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -445,6 +549,8 @@
           <ScalarProperty Name="Director" ColumnName="Director" />
           <ScalarProperty Name="Genre" ColumnName="Genre" />
           <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="RatingsSum" ColumnName="RatingsSum" />
+          <ScalarProperty Name="RatingsCount" ColumnName="RatingsCount" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -453,6 +559,19 @@
         <MappingFragment StoreEntitySet="Roles">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reviews">
+      <EntityTypeMapping TypeName="IsTypeOf(VideoStoreEntityModel.Review)">
+        <MappingFragment StoreEntitySet="Reviews">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="MediaId" ColumnName="MediaId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -568,6 +687,9 @@
           <ConnectorPoint PointX="6.75" PointY="2.9373478190104167" />
         </AssociationConnector>
         <AssociationConnector Association="VideoStoreEntityModel.MediaStock" />
+        <EntityTypeShape EntityType="VideoStoreEntityModel.Review" Width="1.5" PointX="10" PointY="5.25" />
+        <AssociationConnector Association="VideoStoreEntityModel.ReviewUser" />
+        <AssociationConnector Association="VideoStoreEntityModel.ReviewMedia" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

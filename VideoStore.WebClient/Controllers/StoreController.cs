@@ -19,5 +19,10 @@ namespace VideoStore.WebClient.Controllers
         {
             return View(new CatalogueViewModel());
         }
+
+        public ActionResult ListMediaWebAPI()
+        {
+            return View("ListMediaWebApi");
+        }
     }
 }
